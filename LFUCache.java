@@ -63,32 +63,6 @@ public class LFUCache implements ICache {
 
 
         /* return page */
-
-        // debug
-        final List<Integer> sortedHead = new ArrayList<>(this.callRegistry.values())
-            .stream()
-            .sorted()
-            .limit(size)
-            .map(cacheSeq -> cacheSeq.id)
-            .collect(Collectors.toList());
-        System.out.println("sorted register = " + sortedHead);
-
-        final List<Integer> sortedTail = new ArrayList<>(this.callRegistry.values())
-            .stream()
-            .sorted()
-            .skip(size)
-            .map(cacheSeq -> cacheSeq.id)
-            .collect(Collectors.toList());
-        System.out.println("sorted tail = " + sortedTail);
-
-//        final ArrayList<Integer> debugCache = new ArrayList<>();
-//        for (int i = 0; i < this.cache.length; i++) {
-//            if (contains(i)) {
-//                debugCache.add(i);
-//            }
-//        }
-//        System.out.println("cache = " + debugCache);
-        /// debug
     }
 
     public boolean contains(int page) {
@@ -127,18 +101,12 @@ public class LFUCache implements ICache {
 
         @Override
         public String toString() {
-//            return "#"+ id +"[" + calls + ", " + modified + "]";
             return "#"+ id +"[" + calls + "]";
         }
     }
 
     private static final String ANSI_RESET = "\u001B[0m";
     private static final String ANSI_RED = "\u001B[31m";
-    private static final String ANSI_BLUE = "\u001B[34m";
-
-    public static void logPositive(String info, Object... args) {
-        System.out.printf((ANSI_BLUE + info + ANSI_RESET), args);
-    }
 
     public static void logNegative(String error, Object... args) {
         System.out.printf((ANSI_RED + error + ANSI_RESET), args);
