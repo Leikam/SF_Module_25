@@ -1,4 +1,4 @@
-package module_25;
+package module_25.LFUCacheTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
+import module_25.ICache;
 
 /* Задание 25.5.2 – Least Frequently Used cache */
 public class LFUCache implements ICache {
